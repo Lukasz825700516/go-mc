@@ -34,7 +34,21 @@ public class Main {
                 if (superClassName.endsWith("Packet"))
                     className = superClassName.substring(0, superClassName.length() - "Packet".length()) + className;
             }
+
             System.out.println(className);
+
+	    var fields = c.getDeclaredFields();
+	    for (var field : fields) {
+		var name = field.getName();
+		var type = field.getType();
+		var typeName = type.getName();
+
+		// no packet parameters are all UPPER CASE
+		if (name.chars().allMatch(ch -> Character.isUpperCase(ch) || !Character.isAlphabetic(ch)))
+			continue;
+
+		System.out.println("\t" + name + "\t" + typeName);
+	    }
         }
     }
 }

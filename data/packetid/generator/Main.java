@@ -9,17 +9,12 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         handlePackets(ConnectionProtocol.LOGIN.getPacketsByIds(PacketFlow.CLIENTBOUND));
-        System.out.println();
         handlePackets(ConnectionProtocol.LOGIN.getPacketsByIds(PacketFlow.SERVERBOUND));
         System.out.println();
-        System.out.println();
         handlePackets(ConnectionProtocol.STATUS.getPacketsByIds(PacketFlow.CLIENTBOUND));
-        System.out.println();
         handlePackets(ConnectionProtocol.STATUS.getPacketsByIds(PacketFlow.SERVERBOUND));
         System.out.println();
-        System.out.println();
         handlePackets(ConnectionProtocol.PLAY.getPacketsByIds(PacketFlow.CLIENTBOUND));
-        System.out.println();
         handlePackets(ConnectionProtocol.PLAY.getPacketsByIds(PacketFlow.SERVERBOUND));
     }
 
@@ -36,19 +31,6 @@ public class Main {
             }
 
             System.out.println(className);
-
-	    var fields = c.getDeclaredFields();
-	    for (var field : fields) {
-		var name = field.getName();
-		var type = field.getType();
-		var typeName = type.getName();
-
-		// no packet parameters are all UPPER CASE
-		if (name.chars().allMatch(ch -> Character.isUpperCase(ch) || !Character.isAlphabetic(ch)))
-			continue;
-
-		System.out.println("\t" + name + "\t" + typeName);
-	    }
         }
     }
 }

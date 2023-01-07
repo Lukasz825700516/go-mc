@@ -35,6 +35,7 @@ func processClass(f *os.File) {
 
 			if ok {
 				inMethod = false
+				break
 			}
 
  		}
